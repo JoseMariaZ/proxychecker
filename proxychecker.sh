@@ -31,13 +31,7 @@ checkList() {
 
 #Check IP
 proxyCheck(){
-        export http_proxy="http://"$1
-        export https_proxy="http://"$1
-        export ftp_proxy="http://"$1
-        export HTTP_PROXY="http://"$1
-        export HTTPS_PROXY="http://"$1
-        export FTP_PROXY="http://"$1
-        code=$(curl -A "Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101 Firefox/81.0" -s -m 5 http://info.cern.ch/hypertext/WWW/TheProject.html -I | grep HTTP/ | awk -F " " '{print $2}')
+        code=$(curl -A "Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101 Firefox/81.0" -s -m 5 --proxy $1 http://info.cern.ch/hypertext/WWW/TheProject.html -I | grep HTTP/ | awk -F " " '{print $2}')
         code1=200
 	if [ $code = $code1 ] 2>/dev/null; then
         echo "[+]http://"$1" Allows http trafic"
