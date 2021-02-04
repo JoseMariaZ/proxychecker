@@ -29,7 +29,7 @@ checkList() {
         done
 }
 
-#Checl IP
+#Check IP
 proxyCheck(){
         export http_proxy="http://"$1
         export https_proxy="http://"$1
